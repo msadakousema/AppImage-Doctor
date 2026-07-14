@@ -1,0 +1,2 @@
+[console_scripts]
+appimage-doctor = appimage_doctor.cli:main

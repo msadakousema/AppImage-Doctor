@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "appimage-doctor"
+version = "0.1.0"
+description = "Fix and set up AppImage desktop integration on Linux (GNOME/Wayland)"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+    { name = "Oussema Msadak" }
+]
+dependencies = [
+    "Pillow>=9.0",
+]
+
+[project.scripts]
+appimage-doctor = "appimage_doctor.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["appimage_doctor*"]

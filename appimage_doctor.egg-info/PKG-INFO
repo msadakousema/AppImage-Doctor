@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: appimage-doctor
+Version: 0.1.0
+Summary: Fix and set up AppImage desktop integration on Linux (GNOME/Wayland)
+Author: Oussema Msadak
+License: MIT
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: Pillow>=9.0

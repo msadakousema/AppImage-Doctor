@@ -1,8 +1,11 @@
 """Small system-level helpers: making files executable, refreshing desktop database."""
 
+import shutil
 import stat
 import subprocess
 from pathlib import Path
+
+APPLICATIONS_HOME_DIR = Path.home() / "Applications"
 
 
 def ensure_executable(path: str, dry_run: bool = False, verbose: bool = False) -> bool:
@@ -43,3 +46,31 @@ def update_desktop_database(dry_run: bool = False, verbose: bool = False) -> Non
     except FileNotFoundError:
         if verbose:
             print("  (update-desktop-database not found, skipping)")
+
+
+def relocate_appimage(
+    current_path: str, slug: str, dry_run: bool = False, verbose: bool = False
+) -> Path:
+    """
+    Move the AppImage into ~/Applications/, renamed to match the .desktop
+    slug (e.g. 'arduino-ide.AppImage'), creating the folder if needed.
+    If it's already there under the right name, this is a no-op.
+
+    Returns the final path the AppImage lives (or would live) at.
+    """
+    current = Path(current_path).resolve()
+    target_dir = APPLICATIONS_HOME_DIR
+    target_path = target_dir / f"{slug}.AppImage"
+
+    if current == target_path:
+        return current
+
+    if verbose:
+        print(f"$ mkdir -p {target_dir}")
+        print(f"$ mv {current} {target_path}")
+
+    if not dry_run:
+        target_dir.mkdir(parents=True, exist_ok=True)
+        shutil.move(str(current), str(target_path))
+
+    return target_path

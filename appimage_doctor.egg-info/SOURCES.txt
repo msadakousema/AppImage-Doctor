@@ -1,6 +1,12 @@
+README.md
 pyproject.toml
 appimage_doctor/__init__.py
 appimage_doctor/cli.py
+appimage_doctor/desktop_entry.py
+appimage_doctor/icons.py
+appimage_doctor/inspector.py
+appimage_doctor/naming.py
+appimage_doctor/system.py
 appimage_doctor.egg-info/PKG-INFO
 appimage_doctor.egg-info/SOURCES.txt
 appimage_doctor.egg-info/dependency_links.txt

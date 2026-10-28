@@ -50,7 +50,7 @@ need setup, which have issues.
 ## Installation
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/msadakousema/AppImage-Doctor
 cd appimage-doctor
 pip install -e . --break-system-packages
 ```
